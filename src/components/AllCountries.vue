@@ -1,6 +1,6 @@
 <template>
     <div class="countries-list">
-    <h1>All Countires</h1>
+    <h1>All Countries</h1>
       <div class="country-cards">
         <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" :key="country">
           <h2>{{ country.name.common }}</h2>
@@ -17,16 +17,28 @@
 import jsonCountries from '../assets/countries.json'
 
 // sort json countries
-const sortedJsonCountries = jsonCountries.sort((a,b) => {
+let sortedJsonCountries = jsonCountries.sort((a,b) => {
   return a.name.common.localeCompare(b.name.common);
 })
 
 export default {
   name: 'AllCountriesComponent',
+  props: ['searchTerm'],
+  setup(props){
+    let countriesToDisplay = sortedJsonCountries;
+    
+    // filter if searchTerm is set
+    if(props.searchTerm !== undefined){
+      countriesToDisplay = countriesToDisplay.filter(country => {
+        return country.name.common.includes(props.searchTerm)
+      });
+    }
+    return {
+      countries: countriesToDisplay
+    }
+  },
   data(){
     return {
-      name: jsonCountries[0].name.common,
-      countries: sortedJsonCountries
     }
   }
 }

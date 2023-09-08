@@ -9,6 +9,7 @@ import CountryDetailComponent from './components/CountryDetail.vue';
 const routes = [
     { path: '/', component: HomeComponent },
     { path: '/all-countries', component: AllCountriesComponent },
+    { path: '/all-countries/:searchTerm', component: AllCountriesComponent, props: true },
     { path: '/country-detail/:name', component: CountryDetailComponent, props: true },
     { path: '/contact', component: ContactComponent },
 ]

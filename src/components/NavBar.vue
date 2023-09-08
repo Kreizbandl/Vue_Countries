@@ -7,8 +7,8 @@
         <ul>
             <li>
                 <label for="search">Search: </label>
-                <input type="text" id="search" name="search"/>
-                <router-link to="/all-countries">Search wip</router-link>
+                <input type="text" id="search" name="search" v-model="searchTerm"/>
+                <router-link :to="'/all-countries/' + searchTerm">Search</router-link>
             </li>
             <li>
                 <router-link to="/all-countries">All Countries</router-link>
@@ -23,9 +23,11 @@
 <script>
 export default {
   name: 'NavBar',
-  /* props: {
-    msg: String
-  } */
+  data(){
+    return{
+        searchTerm: '',
+    }
+  }
 }
 </script>
 
