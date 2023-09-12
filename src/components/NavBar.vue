@@ -6,8 +6,9 @@
                 
         <ul>
             <li>
-                <label for="search">Search: </label>
-                <input type="text" id="search" name="search" v-model="searchTerm"/>
+                <label for="search">Search: 
+                    <input type="text" id="search" name="search" v-model="searchTerm"/>
+                </label>
                 <router-link :to="'/all-countries/' + searchTerm">Search</router-link>
             </li>
             <li>

@@ -2,19 +2,23 @@
     <h1>Feedback Form</h1>
       <form>
 
+          <!-- not best practise conform -->
           <div>
-              <label for="name">Name: </label>
-              <input type="text" id="name" name="name"/>
+              <label for="name">Name: 
+                <input type="text" id="name" name="name"/>
+              </label>
           </div>
 
           <div>
-              <label for="email">Email: </label>
-              <input type="text" id="email" name="email"/>
+              <label for="email">Email: 
+                <input type="text" id="email" name="email"/>
+              </label>
           </div>
 
           <div>
-              <label for="message">Message: </label>
-              <textarea type="text" id="message" name="message"></textarea>
+              <label for="message">Message: 
+                <textarea type="text" id="message" name="message"></textarea>
+              </label>
           </div>
 
           <button type="submit">Submit</button>
