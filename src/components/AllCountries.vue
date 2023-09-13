@@ -2,12 +2,10 @@
     <div class="countries-list">
     <h1>All Countries</h1>
       <div class="country-cards">
-        <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" :key="country">
+        <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" :key="country" aria-label="Got to detail screen of {{ country.name.common }}">
           <h2>{{ country.name.common }}</h2>
-          <img :alt="country.flags.alt" :src="country.flags.png"/>
-          <!-- TODO: alt text if empty alt -->
-          <!-- <img v-if="country.flags.png" :alt="country.flags.alt" :src="country.flags.png"/> -->
-          <!-- <img v-else :alt="country.name.common" :src="country.flags.png"/> -->
+          <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png"/>
+          <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png"/>
         </router-link>
       </div>
     </div>

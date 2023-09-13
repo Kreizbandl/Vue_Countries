@@ -6,16 +6,21 @@
                 
         <ul>
             <li>
-                <label for="search">Search: 
-                    <input type="text" id="search" name="search" v-model="searchTerm"/>
-                </label>
-                <router-link :to="'/all-countries/' + searchTerm">Search</router-link>
+                <input 
+                    type="text" 
+                    id="search" 
+                    name="search" 
+                    aria-label="Enter a country to search for"
+                    v-model="searchTerm" 
+                    @keydown.enter="navigateToSearch"/>
+                    <!-- change '/' to null aka do nothing -->
+                <router-link :to="searchTerm ? `/all-countries/${searchTerm}` : '/'" aria-label="Search for Countries">Search</router-link>
             </li>
             <li>
-                <router-link to="/all-countries">All Countries</router-link>
+                <router-link to="/all-countries" aria-label="Go to all countries screen">All Countries</router-link>
             </li>
             <li>
-                <router-link to="/contact">Contact</router-link>
+                <router-link to="/contact" aria-label="Go to the contact form">Contact</router-link>
             </li>
         </ul>
     </nav>
@@ -27,6 +32,13 @@ export default {
   data(){
     return{
         searchTerm: '',
+    }
+  },
+  methods: {
+    navigateToSearch() {
+        if(this.searchTerm){
+            this.$router.push('/all-countries/' + this.searchTerm);
+        }
     }
   }
 }

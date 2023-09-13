@@ -1,13 +1,8 @@
 <template>
    <div className="country-detail">
         <h1>{{ name }}</h1>
-        <img :alt="country.flags.alt" :src="country.flags.png"/>
-        <!-- TODO: img if no alt text -->
-        <!-- { x.flags.alt ? (
-                <img alt={ x.flags.alt } src={ x.flags.png }></img>
-            ) : (
-                <img alt={ 'Flag of country ' + x.name.common } src={ x.flags.png }></img>
-            )}-->
+        <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png"/>
+        <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png"/>
         <p>Population: {{ country.population }}</p>     
     </div>
 </template>
