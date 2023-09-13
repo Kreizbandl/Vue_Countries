@@ -7,11 +7,15 @@ import AllCountriesComponent from './components/AllCountries.vue';
 import CountryDetailComponent from './components/CountryDetail.vue';
 
 const routes = [
+    /* Startseite */
     { path: '/', component: HomeComponent },
+    /* Route zur jeweiligen Seite */
     { path: '/all-countries', component: AllCountriesComponent },
-    { path: '/all-countries/:searchTerm', component: AllCountriesComponent, props: true },
-    { path: '/country-detail/:name', component: CountryDetailComponent, props: true },
     { path: '/contact', component: ContactComponent },
+    /* Route zur Filterung der Länderliste */
+    { path: '/all-countries/:searchTerm', component: AllCountriesComponent, props: true },
+    /* Route zur Detailsansicht eines bestimmten Landes */
+    { path: '/country-detail/:name', component: CountryDetailComponent, props: true },
 ]
 
 const router = createRouter({

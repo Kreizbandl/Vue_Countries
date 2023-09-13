@@ -1,6 +1,8 @@
 <template>
+  <!-- Navigationsmenü -->
   <NavBar/>
   <div class="content">
+    <!-- Dynamische Einbindung der Seiten -->
     <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>

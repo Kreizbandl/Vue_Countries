@@ -1,25 +1,25 @@
 <template>
    <nav className='navbar'>
+    <!-- Logo-Link mit beschreibendem Label und alternativem Text -->
         <router-link to="/">
             <img alt="Logo of the website all-countries" src="../assets/logo.png"/>
         </router-link>
-                
+
         <ul>
             <li>
-                <input 
-                    type="text" 
-                    id="search" 
-                    name="search" 
-                    aria-label="Enter a country to search for"
-                    v-model="searchTerm" 
-                    @keydown.enter="navigateToSearch"/>
-                    <!-- change '/' to null aka do nothing -->
-                <router-link :to="searchTerm ? `/all-countries/${searchTerm}` : '/'" aria-label="Search for Countries">Search</router-link>
+                <!-- Eingabefeld für die Suche mit beschreibendem Label und auslösbar über die Enter-Taste -->
+                <input type="text" id="search" name="search" aria-label="Enter a country to search for"
+                    v-model="searchTerm" @keydown.enter="navigateToSearch"/>
+                    <!-- Link zum Auslösen der Suche mit beschreibendem Label -->
+                <router-link :to="searchTerm ? `/all-countries/${searchTerm}` : '/'" 
+                    aria-label="Search for Countries">Search</router-link>
             </li>
             <li>
+                <!-- Link zur Liste alle Länder mit beschreibendem Label -->
                 <router-link to="/all-countries" aria-label="Go to all countries screen">All Countries</router-link>
             </li>
             <li>
+                <!-- Link zum Kontaktformular mit beschreibendem Label -->
                 <router-link to="/contact" aria-label="Go to the contact form">Contact</router-link>
             </li>
         </ul>
@@ -35,6 +35,7 @@ export default {
     }
   },
   methods: {
+    /*  Navigation zur Länderliste mit dem eingegebenen Suchbegriff  */
     navigateToSearch() {
         if(this.searchTerm){
             this.$router.push('/all-countries/' + this.searchTerm);

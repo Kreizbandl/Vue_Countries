@@ -1,5 +1,6 @@
 <template>
-   <div className="country-detail">
+    <!-- Informationen eines Landes mit Bild mit alternativem Text -->
+    <div className="country-detail">
         <h1>{{ name }}</h1>
         <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png"/>
         <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png"/>
@@ -15,14 +16,14 @@ export default {
     name: 'CountryDetailComponent',
     props: ['name'],
     setup(props){
-        // get corresponding country details
+        /* Verwendung von ref für das Land */
         const country = ref(null);
+        /* Finden der Länderinformationen mittels Suchbegriff */
         const foundCountry = jsonCountries.find(country => country.name.common === props.name);
-        
+        /* Zuweisung des Landes an ref, wenn es gefunden wird */
         if (foundCountry) {
             country.value = foundCountry;
         }
-
         return {
             country,
         };

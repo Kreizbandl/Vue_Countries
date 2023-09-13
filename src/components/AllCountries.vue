@@ -1,9 +1,13 @@
 <template>
     <div class="countries-list">
+      <!-- Überschrift -->
     <h1>{{ heading }}</h1>
       <div class="country-cards">
-        <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" :key="country" aria-label="Got to detail screen of {{ country.name.common }}">
+        <!-- Link zur Detailansicht des Landes mit Label für jedes Land -->
+        <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" 
+          :key="country" aria-label="Got to detail screen of {{ country.name.common }}">
           <h2>{{ country.name.common }}</h2>
+          <!-- Bild mit alternativem Text -->
           <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png"/>
           <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png"/>
         </router-link>
@@ -15,7 +19,7 @@
 import jsonCountries from '../assets/countries.json'
 
 let heading = 'All Countries';
-// sort json countries
+/* Sortiert Länder alphabetisch */
 let sortedJsonCountries = jsonCountries.sort((a,b) => {
   return a.name.common.localeCompare(b.name.common);
 })
@@ -26,12 +30,14 @@ export default {
   setup(props){
     let countriesToDisplay = sortedJsonCountries;
     heading = 'All Countries';
-    // filter if searchTerm is set
+    /* Zeigt nur die entsprechenden Länder, wenn ein Suchbegriff vorhanden */
     if(props.searchTerm !== undefined){
       heading = 'Found Countries for ' + props.searchTerm;
+      /* Verwende nur passende Länder */
       countriesToDisplay = countriesToDisplay.filter(country => {
         return country.name.common.includes(props.searchTerm)
       });
+      /* Zeigt Fehlermeldung, wenn keine Länder gefunden wurden */
       if(countriesToDisplay.length === 0){
         heading = 'Nothing found for ' + props.searchTerm;
       }
