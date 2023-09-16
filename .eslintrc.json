@@ -1,0 +1,4 @@
+{
+  "extends": ["plugin:vue/vue3-recommended","plugin:vue-a11y/recommended"],
+  "plugins": ["vue-a11y"]
+}
