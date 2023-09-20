@@ -65,7 +65,8 @@ export default {
 }
 
 .card {
-  width: 200px;
+  padding: 0.5em;
+  width: 350px;
   margin: 0.5em;
   border-radius: 10px;
   border-color: grey;
@@ -77,15 +78,12 @@ export default {
 
 .card img {
   width: auto;
-  height: 80px;
+  height: 120px;
 }
 
 .card h2 {
-  max-width: 160px;
+  max-width: auto;
   margin-left: 0.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .country-cards {
