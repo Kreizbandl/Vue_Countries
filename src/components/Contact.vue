@@ -1,32 +1,64 @@
 <template>
   <!-- Überschrift -->
   <h1>Feedback Form</h1>
-  <div v-if="!isFormSubmitted" class="contact">
+  <div
+    v-if="!isFormSubmitted"
+    class="contact"
+  >
     <!-- Feedback Formular-->
     <form @submit.prevent="handleSubmit">
       <!-- Eingabefeld für den Namen mit beschreibendem Label -->
       <div>
         <label for="name">Name:
-          <input v-model="name" ref="nameInput" type="text" id="name" name="name" aria-label="Enter your name"
-          :style="{ borderColor: nameEmpty && nameInputBlurred ? 'red' : 'inherit' }" @blur="nameInputBlurred = true" />
+          <input
+            id="name"
+            ref="nameInput"
+            v-model="name"
+            type="text"
+            name="name"
+            aria-label="Enter your name"
+            :style="{ borderColor: nameEmpty && nameInputBlurred ? 'red' : 'inherit' }"
+            @blur="nameInputBlurred = true"
+          >
         </label>
       </div>
       <!-- Eingabefeld für die Email mit beschreibendem Label -->
       <div>
         <label for="email">Email:
-          <input v-model="email" type="text" id="email" name="email" aria-label="Enter your email" 
-          :style="{ borderColor: emailEmpty && emailInputBlurred ? 'red' : 'inherit' }" @blur="emailInputBlurred = true" />
+          <input
+            id="email"
+            v-model="email"
+            type="text"
+            name="email"
+            aria-label="Enter your email" 
+            :style="{ borderColor: emailEmpty && emailInputBlurred ? 'red' : 'inherit' }"
+            @blur="emailInputBlurred = true"
+          >
         </label>
       </div>
       <!-- Textbereich für die Nachricht mit beschreibendem Label -->
       <div>
         <label for="message">Message:
-          <textarea v-model="message" type="text" id="message" name="message" aria-label="Enter a message"
-          :style="{ borderColor: messageEmpty && messageInputBlurred ? 'red' : 'inherit' }" @blur="messageInputBlurred = true" ></textarea>
+          <textarea
+            id="message"
+            v-model="message"
+            type="text"
+            name="message"
+            aria-label="Enter a message"
+            :style="{ borderColor: messageEmpty && messageInputBlurred ? 'red' : 'inherit' }"
+            @blur="messageInputBlurred = true"
+          />
         </label>
       </div>
       <!-- Button zum Absenden des Formulars mit beschreibendem Label -->
-      <button id="submit" type="submit" aria-label="Submit" :disabled="!isFormValid">Submit</button>
+      <button
+        id="submit"
+        type="submit"
+        aria-label="Submit"
+        :disabled="!isFormValid"
+      >
+        Submit
+      </button>
     </form>
   </div>
   <div v-else>

@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "html-validate": "vue-cli-service html-validate"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -24,7 +25,10 @@
     "eslint-plugin-vue": "^8.7.1",
     "eslint-plugin-vue-a11y": "^0.0.31",
     "eslint-plugin-vuejs-accessibility": "^2.2.0",
-    "vue-axe": "^3.1.2"
+    "html-validate": "^7",
+    "html-validate-vue": "^5",
+    "vue-axe": "^3.1.2",
+    "vue-cli-plugin-html-validate": "~4.0.0"
   },
   "eslintConfig": {
     "root": true,

@@ -1,10 +1,13 @@
 <template>
-    <!-- Informationen eines Landes mit Bild mit alternativem Text -->
-    <div className="country-detail">
-        <h1>{{ name }}</h1>
-        <img :alt="country.flags.alt" :src="country.flags.png" />
-        <p>Population: {{ country.population }}</p>
-    </div>
+  <!-- Informationen eines Landes mit Bild mit alternativem Text -->
+  <div className="country-detail">
+    <h1>{{ name }}</h1>
+    <img
+      :alt="country.flags.alt"
+      :src="country.flags.png"
+    >
+    <p>Population: {{ country.population }}</p>
+  </div>
 </template>
 
 <script>

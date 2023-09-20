@@ -4,12 +4,21 @@
     <h1>{{ heading }}</h1>
     <div class="country-cards">
       <!-- Link zur Detailansicht des Landes mit Label für jedes Land -->
-      <router-link ref="countryLinks" :to="'/country-detail/' + country.name.common" class="card"
-        v-for="(country, index) in countries" :key="country"
-        aria-label="Got to detail screen of {{ country.name.common }}" :id="'country-' + index">
+      <router-link
+        v-for="(country, index) in countries"
+        :id="'country-' + index"
+        ref="countryLinks"
+        :key="country"
+        :to="'/country-detail/' + country.name.common"
+        class="card"
+        aria-label="Got to detail screen of {{ country.name.common }}"
+      >
         <h2>{{ country.name.common }}</h2>
         <!-- Bild mit alternativem Text -->
-        <img :alt="country.flags.alt" :src="country.flags.png" />
+        <img
+          :alt="country.flags.alt"
+          :src="country.flags.png"
+        >
       </router-link>
     </div>
   </div>
@@ -33,12 +42,6 @@ sortedJsonCountries.forEach(country => {
 export default {
   name: 'AllCountriesComponent',
   props: ['searchTerm'],
-  data() {
-    return {
-      heading: heading,
-      countriesToDisplay: []
-    }
-  },
   setup(props) {
     let countriesToDisplay = sortedJsonCountries;
     heading = 'All Countries';
@@ -57,6 +60,12 @@ export default {
 
     return {
       countries: countriesToDisplay,
+    }
+  },
+  data() {
+    return {
+      heading: heading,
+      countriesToDisplay: []
     }
   },
   mounted() {
