@@ -1,10 +1,21 @@
 import App from './App.vue';
-import { createApp } from 'vue';
+import { createApp, h, Fragment } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeComponent from './components/Home.vue';
 import ContactComponent from './components/Contact.vue';
 import AllCountriesComponent from './components/AllCountries.vue';
 import CountryDetailComponent from './components/CountryDetail.vue';
+import VueAxe from 'vue-axe';
+
+let app = createApp(App);
+
+if(process.env.NODE_ENV === 'development'){
+    const VueAxe = require('vue-axe')
+    app = createApp({
+        render: () => h(Fragment, [h(App), h(VueAxe.VueAxePopup)])
+    })
+    app.use(VueAxe.default)
+}
 
 const routes = [
     /* Startseite */
@@ -23,4 +34,5 @@ const router = createRouter({
     routes: routes,
 })
 
-createApp(App).use(router).mount('#app')
+/* createApp(App).use(router).mount('#app') */
+app.use(router).mount('#app')
