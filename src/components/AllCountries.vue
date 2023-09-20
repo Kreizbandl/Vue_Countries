@@ -33,36 +33,41 @@ sortedJsonCountries.forEach(country => {
 export default {
   name: 'AllCountriesComponent',
   props: ['searchTerm'],
+  data() {
+    return {
+      heading: heading,
+      countriesToDisplay: []
+    }
+  },
   setup(props) {
     let countriesToDisplay = sortedJsonCountries;
     heading = 'All Countries';
     /* Zeigt nur die entsprechenden Länder, wenn ein Suchbegriff vorhanden */
     if (props.searchTerm !== undefined) {
-      heading = 'Found Countries for ' + props.searchTerm;
+      heading = 'Found Countries for "' + props.searchTerm + '"';
       /* Verwende nur passende Länder */
       countriesToDisplay = countriesToDisplay.filter(country => {
         return country.name.common.includes(props.searchTerm)
       });
       /* Zeigt Fehlermeldung, wenn keine Länder gefunden wurden */
       if (countriesToDisplay.length === 0) {
-        heading = 'Nothing found for ' + props.searchTerm;
+        heading = 'Nothing found for "' + props.searchTerm + '"';
       }
     }
+
     return {
       countries: countriesToDisplay,
     }
   },
-  data() {
-    return {
-      heading: heading
-    }
-  },
   mounted() {
-    // Nachdem die Komponente montiert wurde, den Fokus auf das erste Element setzen
+    // Nachdem die Komponente montiert wurde, den Fokus auf das erste Element setzen, sofern es existiert
     this.$nextTick(() => {
-      const firstLink = this.$refs.countryLinks[0];
-      if (firstLink) {
-        firstLink.$el.focus();
+      if (this.$refs.countryLinks && this.$refs.countryLinks.length > 0) {
+        const firstLink = this.$refs.countryLinks[0];
+        if (firstLink && firstLink.$el) {
+          firstLink.$el.focus();
+        }
+
       }
     });
   },
