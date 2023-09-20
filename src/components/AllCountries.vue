@@ -4,8 +4,9 @@
     <h1>{{ heading }}</h1>
     <div class="country-cards">
       <!-- Link zur Detailansicht des Landes mit Label für jedes Land -->
-      <router-link :to="'/country-detail/' + country.name.common" class="card" v-for="country in countries" :key="country"
-        aria-label="Got to detail screen of {{ country.name.common }}">
+      <router-link ref="countryLinks" :to="'/country-detail/' + country.name.common" class="card"
+        v-for="(country, index) in countries" :key="country"
+        aria-label="Got to detail screen of {{ country.name.common }}" :id="'country-' + index">
         <h2>{{ country.name.common }}</h2>
         <!-- Bild mit alternativem Text -->
         <img :alt="country.flags.alt" :src="country.flags.png" />
@@ -55,7 +56,16 @@ export default {
     return {
       heading: heading
     }
-  }
+  },
+  mounted() {
+    // Nachdem die Komponente montiert wurde, den Fokus auf das erste Element setzen
+    this.$nextTick(() => {
+      const firstLink = this.$refs.countryLinks[0];
+      if (firstLink) {
+        firstLink.$el.focus();
+      }
+    });
+  },
 }
 </script>
 

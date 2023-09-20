@@ -6,7 +6,7 @@
     <!-- Eingabefeld für den Namen mit beschreibendem Label -->
     <div>
       <label for="name">Name:
-        <input type="text" id="name" name="name" aria-label="Enter your name" />
+        <input ref="nameInput" type="text" id="name" name="name" aria-label="Enter your name"/>
       </label>
     </div>
     <!-- Eingabefeld für die Email mit beschreibendem Label -->
@@ -29,6 +29,10 @@
 <script>
 export default {
   name: 'ContactComponent',
+  mounted() {
+    // Nachdem die Komponente montiert wurde, den Fokus auf das Name-Eingabefeld setzen
+    this.$refs.nameInput.focus();
+  }
 }
 </script>
 
