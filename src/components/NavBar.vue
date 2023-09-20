@@ -1,17 +1,17 @@
 <template>
-   <nav className='navbar'>
-    <!-- Logo-Link mit beschreibendem Label und alternativem Text -->
+    <nav className='navbar'>
+        <!-- Logo-Link mit beschreibendem Label und alternativem Text -->
         <router-link to="/">
-            <img alt="Logo of the website all-countries" src="../assets/logo.png"/>
+            <img alt="Logo of the website all-countries" src="../assets/logo.png" />
         </router-link>
 
         <ul>
             <li>
                 <!-- Eingabefeld für die Suche mit beschreibendem Label und auslösbar über die Enter-Taste -->
-                <input type="text" id="search" name="search" aria-label="Enter a country to search for"
-                    v-model="searchTerm" @keydown.enter="navigateToSearch"/>
-                    <!-- Link zum Auslösen der Suche mit beschreibendem Label -->
-                <router-link :to="searchTerm ? `/all-countries/${searchTerm}` : '/'" 
+                <input type="text" id="search" name="search" aria-label="Enter a country to search for" v-model="searchTerm"
+                    @keydown.enter="navigateToSearch" />
+                <!-- Link zum Auslösen der Suche mit beschreibendem Label -->
+                <router-link :to="searchTerm ? `/all-countries/${searchTerm}` : '/'"
                     aria-label="Search for Countries">Search</router-link>
             </li>
             <li>
@@ -28,20 +28,20 @@
 
 <script>
 export default {
-  name: 'NavBar',
-  data(){
-    return{
-        searchTerm: '',
-    }
-  },
-  methods: {
-    /*  Navigation zur Länderliste mit dem eingegebenen Suchbegriff  */
-    navigateToSearch() {
-        if(this.searchTerm){
-            this.$router.push('/all-countries/' + this.searchTerm);
+    name: 'NavBar',
+    data() {
+        return {
+            searchTerm: '',
+        }
+    },
+    methods: {
+        /*  Navigation zur Länderliste mit dem eingegebenen Suchbegriff  */
+        navigateToSearch() {
+            if (this.searchTerm) {
+                this.$router.push('/all-countries/' + this.searchTerm);
+            }
         }
     }
-  }
 }
 </script>
 

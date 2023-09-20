@@ -1,6 +1,6 @@
 <template>
   <!-- Navigationsmenü -->
-  <NavBar/>
+  <NavBar />
   <div class="content">
     <!-- Dynamische Einbindung der Seiten -->
     <router-view :key="$route.fullPath"></router-view>
@@ -22,9 +22,11 @@ export default {
 * {
   margin: 0;
 }
+
 .content {
   padding: 1em;
 }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

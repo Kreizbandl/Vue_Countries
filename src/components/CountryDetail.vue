@@ -2,9 +2,9 @@
     <!-- Informationen eines Landes mit Bild mit alternativem Text -->
     <div className="country-detail">
         <h1>{{ name }}</h1>
-        <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png"/>
-        <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png"/>
-        <p>Population: {{ country.population }}</p>     
+        <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png" />
+        <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png" />
+        <p>Population: {{ country.population }}</p>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ import { ref } from 'vue'
 export default {
     name: 'CountryDetailComponent',
     props: ['name'],
-    setup(props){
+    setup(props) {
         /* Verwendung von ref für das Land */
         const country = ref(null);
         /* Finden der Länderinformationen mittels Suchbegriff */
