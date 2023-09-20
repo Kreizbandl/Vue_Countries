@@ -8,8 +8,7 @@
         aria-label="Got to detail screen of {{ country.name.common }}">
         <h2>{{ country.name.common }}</h2>
         <!-- Bild mit alternativem Text -->
-        <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png" />
-        <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png" />
+        <img :alt="country.flags.alt" :src="country.flags.png" />
       </router-link>
     </div>
   </div>
@@ -23,6 +22,12 @@ let heading = 'All Countries';
 let sortedJsonCountries = jsonCountries.sort((a, b) => {
   return a.name.common.localeCompare(b.name.common);
 })
+/* Setzt alternativen Text falls nicht vorhanden */
+sortedJsonCountries.forEach(country => {
+  if (!country.flags.alt) {
+    country.flags.alt = 'Flag of country ' + country.name.common;
+  }
+});
 
 export default {
   name: 'AllCountriesComponent',
@@ -86,4 +91,5 @@ export default {
 .country-cards {
   display: flex;
   flex-wrap: wrap;
-}</style>
+}
+</style>

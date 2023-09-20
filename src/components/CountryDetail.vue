@@ -2,8 +2,7 @@
     <!-- Informationen eines Landes mit Bild mit alternativem Text -->
     <div className="country-detail">
         <h1>{{ name }}</h1>
-        <img v-if="country.flags.alt" :alt="country.flags.alt" :src="country.flags.png" />
-        <img v-else :alt="'Flag of country ' + country.name.common" :src="country.flags.png" />
+        <img :alt="country.flags.alt" :src="country.flags.png" />
         <p>Population: {{ country.population }}</p>
     </div>
 </template>
@@ -20,6 +19,10 @@ export default {
         const country = ref(null);
         /* Finden der Länderinformationen mittels Suchbegriff */
         const foundCountry = jsonCountries.find(country => country.name.common === props.name);
+        /* Setzt alternativen Text falls nicht vorhanden */
+        if (!foundCountry.flags.alt) {
+            foundCountry.flags.alt = 'Flag of country ' + foundCountry.name.common;
+        }
         /* Zuweisung des Landes an ref, wenn es gefunden wird */
         if (foundCountry) {
             country.value = foundCountry;
