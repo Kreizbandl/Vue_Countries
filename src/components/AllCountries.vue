@@ -5,8 +5,7 @@
     <div class="country-cards">
       <!-- Link zur Detailansicht des Landes mit Label für jedes Land -->
       <router-link
-        v-for="(country, index) in countries"
-        :id="'country-' + index"
+        v-for="(country) in countries"
         ref="countryLinks"
         :key="country"
         :to="'/country-detail/' + country.name.common"
